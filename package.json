@@ -133,5 +133,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.18.6"
   }
 }
