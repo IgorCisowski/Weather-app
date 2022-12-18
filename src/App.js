@@ -26,9 +26,11 @@ function App() {
           wind: data.wind.speed,
         })
       );
+    // if (place !== placeInfo.name) {
+    //   alert("Please enter a valid city!");
+    //   return false;
+    // }
   };
-
-  // console.log(placeInfo);
 
   return (
     <body
