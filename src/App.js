@@ -12,11 +12,14 @@ function App() {
     handleFetch();
   }, []);
 
-  // fetch is going to be a function
+  // fetch is going to be a function ()async przed ()
   const handleFetch = () => {
     fetch(API)
-      .then((response) => response.json())
-      .then((data) =>
+      .then((response) => {
+        if (!response.ok) return alert("Please enter a valid city!");
+        return response.json();
+      })
+      .then((data) => {
         setPlaceInfo({
           name: data.name,
           icon: data.weather[0].icon,
@@ -24,12 +27,8 @@ function App() {
           temperature: data.main.temp,
           humidity: data.main.humidity,
           wind: data.wind.speed,
-        })
-      );
-    // if (place !== placeInfo.name) {
-    //   alert("Please enter a valid city!");
-    //   return false;
-    // }
+        });
+      });
   };
 
   return (
@@ -48,6 +47,8 @@ function App() {
             onKeyUp={(e) => {
               if (e.key === "Enter") {
                 handleFetch();
+
+                e.target.blur();
               }
             }}
           />
