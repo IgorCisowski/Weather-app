@@ -65,7 +65,7 @@ function App() {
         </div>
         <div className="weather-container">
           <h2 className="city">Weather in {placeInfo.name}</h2>
-          <div className="temp">{placeInfo.temperature?.toFixed()}°C</div>
+          <div className="temp">{placeInfo.temperature?.toFixed(0)}°C</div>
           <div className="imgPlusDes">
             <img
               className="icon"
