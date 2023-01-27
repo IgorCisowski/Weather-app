@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-// define use state
 
 function App() {
-  // create a state variable
   const [place, setPlace] = useState("London");
   const [placeInfo, setPlaceInfo] = useState({});
   let API = `https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&appid=ac8ca00cb1e106bf3a5f83ee3a43a6ec`;
@@ -12,7 +10,6 @@ function App() {
     handleFetch();
   }, []);
 
-  // fetch is going to be a function ()async przed ()
   const handleFetch = () => {
     fetch(API)
       .then((response) => {
@@ -20,6 +17,7 @@ function App() {
         return response.json();
       })
       .then((data) => {
+        console.log(placeInfo);
         setPlaceInfo({
           name: data.name,
           icon: data.weather[0].icon,
@@ -30,7 +28,6 @@ function App() {
         });
       });
   };
-
   return (
     <body
       style={{
@@ -56,7 +53,7 @@ function App() {
             <svg
               stroke="currentColor"
               fill="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 1024 1024"
               height="1.5em"
               width="1.5em"
@@ -68,7 +65,7 @@ function App() {
         </div>
         <div className="weather-container">
           <h2 className="city">Weather in {placeInfo.name}</h2>
-          <div className="temp">{placeInfo.temperature}°C</div>
+          <div className="temp">{placeInfo.temperature?.toFixed()}°C</div>
           <div className="imgPlusDes">
             <img
               className="icon"
