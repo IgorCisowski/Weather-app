@@ -26,6 +26,7 @@ function App() {
           humidity: data.main.humidity,
           wind: data.wind.speed,
         });
+        setPlace("");
       });
   };
   return (
